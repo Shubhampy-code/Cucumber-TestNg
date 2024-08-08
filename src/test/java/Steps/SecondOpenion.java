@@ -43,18 +43,19 @@ public class SecondOpenion {
 	}
 
 	@When("user enter the firstname,lastname, phone, email textbox")
-	public void user_enter_the_firstname_lastname_phone_email_textbox() {
-		
+	public void user_enter_the_firstname_lastname_phone_email_textbox() throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 		js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,2000)");
+		js.executeScript("window.scrollBy(0,700)");
 		
 		driver.findElement(By.id("secondopinion_first_name")).sendKeys("Shubham");
 		driver.findElement(By.id("secondopinion_last_name")).sendKeys("Shrivastava");
 		driver.findElement(By.id("secondopinion_phone")).sendKeys("9450067685");
 		driver.findElement(By.id("secondopinion_email")).sendKeys("shubham.sda@gmail.com");
 		driver.findElement(By.id("secondopinion_message")).sendKeys("Hi i want second openion");
-		
-		driver.findElement(By.id("secondopinion_submit")).click();
+		Thread.sleep(2);
+		driver.findElement(By.cssSelector("[id=\"secondopinion_submit\"]")).click();
 	}
 
 	@When("upload the report")
